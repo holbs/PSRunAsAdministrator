@@ -7,4 +7,4 @@ If ($Source) {
     New-EventLog -LogName 'Windows PowerShell' -Source $EventSource
 }
 # Trigger the event
-Write-EventLog -LogName 'Windows PowerShell' -Source $EventSource -EntryType Information "'TreeSize (via Elevator)' launched by '$($env:USERDOMAIN.ToUpper())\$($env:USERNAME.ToLower())'" -EventId 7777
+Write-EventLog -LogName 'Windows PowerShell' -Source $EventSource -EntryType Information "'TreeSize (via PSRunAsAdministrator)' launched by '$($env:USERDOMAIN.ToUpper())\$($env:USERNAME.ToLower())'" -EventId 7777

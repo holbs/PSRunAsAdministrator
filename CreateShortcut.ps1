@@ -5,8 +5,8 @@ If (Test-Path "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\TreeSize.lnk")
     $Shell = New-Object -ComObject WScript.Shell
     $Shortcut = $Shell.CreateShortcut("$env:APPDATA\Microsoft\Windows\Start Menu\Programs\TreeSize.lnk")
     $Shortcut.TargetPath = "$env:WINDIR\System32\WindowsPowerShell\v1.0\powershell.exe"
-    $Shortcut.Arguments = "-NoProfile -WindowStyle hidden -ExecutionPolicy bypass -File $env:WINDIR\TreeSize\Tools\MakeEvent.ps1"
-    $Shortcut.Description = "Runs TreeSize as administrator, using a scheduled task designed to fire when event ID 7777 is caught"
+    $Shortcut.Arguments = "-NoProfile -WindowStyle hidden -ExecutionPolicy bypass -File $env:WINDIR\PSRunAsAdministrator\Tools\MakeEvent.ps1"
+    $Shortcut.Description = "Runs TreeSize as administrator using PSRunAsAdministrator"
     $Shortcut.WorkingDirectory = "$env:WINDIR\System32\WindowsPowerShell\v1.0\"
     $Shortcut.IconLocation = "$env:WINDIR\TreeSize\Tools\TreeSize.exe,0"
     $Shortcut.Save()

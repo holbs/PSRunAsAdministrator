@@ -5,14 +5,14 @@ $Trigger.Enabled = $true
 $Trigger.Subscription = '<QueryList><Query Id="0" Path="Windows PowerShell"><Select Path="Windows PowerShell">*[System[Provider[@Name=''PowerShell Automation''] and EventID=7777]]</Select></Query></QueryList>'
 # Action and argument for starting TreeSize.exe
 $ActionParameters = @{
-    Execute  = "$env:WINDIR\TreeSize\Tools\ServiceUIx64.exe"
-    Argument = "-Process:explorer.exe $env:WINDIR\TreeSize\Tools\TreeSize.exe"
+    Execute  = "$env:WINDIR\PSRunAsAdministrator\Tools\ServiceUIx64.exe"
+    Argument = "-Process:explorer.exe $env:WINDIR\PSRunAsAdministrator\Tools\TreeSize.exe"
 }
 $Action = New-ScheduledTaskAction @ActionParameters
 $Principal = New-ScheduledTaskPrincipal -UserId "NT AUTHORITY\SYSTEM" -LogonType ServiceAccount
 $Settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries
 $RegSchTaskParameters = @{
-    TaskName    = 'Run TreeSize (via Elevator)'
+    TaskName    = 'Run TreeSize (via PSRunAsAdministrator)'
     Description = 'Runs TreeSize.exe as administrator'
     TaskPath    = 'PSRunAsAdministrator\'
     Action      = $Action
