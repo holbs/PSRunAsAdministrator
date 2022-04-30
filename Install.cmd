@@ -8,7 +8,7 @@ robocopy %~dp0 %SYSTEMROOT%\TreeSize\Tools CreateShortcut.ps1 MakeEvent.ps1 Tree
 powershell Register-ScheduledTask -TaskName 'Create TreeSize shortcut' -TaskPath 'PSRunAsAdministrator\' -Action (New-ScheduledTaskAction -Execute 'powershell' -Argument '-NoProfile -ExecutionPolicy bypass -File %SYSTEMROOT%\TreeSize\Tools\CreateShortcut.ps1') -Trigger (New-ScheduledTaskTrigger -AtLogon) -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries)
 powershell %~dp0CreateScheduledTasks.ps1
 schtasks /run /tn "Create TreeSize shortcut"
-SET DATETIME=%DATE%_%TIME%
+SET DATETIME=%DATE%-%TIME%
 REG ADD HKLM\SOFTWARE\Elevator /v TreeSize /t REG_SZ /d %DATETIME% /f
 :EXITSUCCESS
 EXIT /b 0
